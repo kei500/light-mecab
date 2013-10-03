@@ -2,12 +2,12 @@
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 
 require 'test-unit'
-require 'mecab-light'
+require 'light-mecab'
 
-class TC_MecabLight_Morpheme < Test::Unit::TestCase
+class TC_LightMecab_Morpheme < Test::Unit::TestCase
   def setup
     @sentence = 'そして太郎はこの本を二郎を見た美しい女性に渡した。'
-    @morpheme = MecabLight::Morpheme.new(@sentence)
+    @morpheme = LightMecab::Morpheme.new(@sentence)
   end
 
   def test_count

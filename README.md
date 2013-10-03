@@ -1,6 +1,6 @@
-# MecabLight
+# LightMecab
 
-MecabLightは，mecab-rubyをラッピングすることで，より簡単に形態素解析を行うgemである．
+LightMecabは，mecab-rubyをラッピングすることで，より簡単に形態素解析を行うgemである．
 
 ## Environment
 
@@ -10,7 +10,7 @@ MeCabおよびmecab-rubyが動作する環境が必要．
 
 Gemfileに以下を記述する．
 
-    gem 'mecab-light'
+    gem 'light-mecab'
 
 その後，
 
@@ -20,15 +20,15 @@ Gemfileに以下を記述する．
 
 以下のコマンドでもインストール可能．
 
-    $ gem install mecab-light
+    $ gem install light-mecab
 
 ## Usage
 例えば「太郎はこの本を二郎を見た女性に渡した。」という文に含まれる名詞は，
 
 ```ruby
-require 'mecab-light'
+require 'light-mecab'
 sentence = '太郎はこの本を二郎を見た女性に渡した。'
-MecabLight::Morpheme.new(sentence).noun
+LightMecab::Morpheme.new(sentence).noun
 ```
 によって取得できる（返り値はString型の配列）．
 
