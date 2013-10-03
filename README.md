@@ -1,6 +1,6 @@
-# Mecablight
+# MecabLight
 
-Mecablightは，mecab-rubyをラッピングすることで，より簡単に形態素解析を行うgemである．
+MecabLightは，mecab-rubyをラッピングすることで，より簡単に形態素解析を行うgemである．
 
 ## Environment
 
@@ -34,7 +34,7 @@ MecabLight::Morpheme.new(sentence).noun
 
 その他の品詞（形態素）を取得するメソッド名は，以下を参照．
 
-    lib/lib/locale/morpheme.yml
+    lib/locale/morpheme.yml
 
 
 
