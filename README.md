@@ -26,8 +26,9 @@ Gemfileに以下を記述する．
 例えば「太郎はこの本を二郎を見た女性に渡した。」という文に含まれる名詞は，
 
 ```ruby
+require 'mecab-light'
 sentence = '太郎はこの本を二郎を見た女性に渡した。'
-Mecablight::Morpheme.new(sentence).noun
+MecabLight::Morpheme.new(sentence).noun
 ```
 によって取得できる（返り値はString型の配列）．
 

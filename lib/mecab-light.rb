@@ -1,8 +1,8 @@
-require 'mecablight/version'
+require 'mecab-light/version'
 require 'MeCab'
 require 'yaml'
 
-module Mecablight
+module MecabLight
   class Morpheme
     @@i18n = ::YAML.load_file(File.expand_path(File.join(__FILE__, '..', 'locale', 'morpheme.yml')))
 

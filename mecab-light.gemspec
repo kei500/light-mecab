@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mecablight/version'
+require 'mecab-light/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'mecab-light'
-  spec.version       = Mecablight::VERSION
+  spec.version       = MecabLight::VERSION
   spec.authors       = ['Kei Tsuchiya']
   spec.email         = ['kei.tsuchiya86@gmail.com']
   spec.description   = %q{Execute morphological analysis by MeCab}
