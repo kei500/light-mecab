@@ -1,24 +1,41 @@
 # Mecablight
 
-TODO: Write a gem description
+Mecablightは，mecab-rubyをラッピングすることで，より簡単に形態素解析を行うgemである．
+
+## Environment
+
+MeCabおよびmecab-rubyが動作する環境が必要．
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Gemfileに以下を記述する．
 
     gem 'mecab-light'
 
-And then execute:
+その後，
 
     $ bundle
 
-Or install it yourself as:
+を実行．  
+
+以下のコマンドでもインストール可能．
 
     $ gem install mecab-light
 
 ## Usage
+例えば「太郎はこの本を二郎を見た女性に渡した。」という文に含まれる名詞は，
 
-TODO: Write usage instructions here
+```ruby
+sentence = '太郎はこの本を二郎を見た女性に渡した。'
+Mecablight::Morpheme.new(sentence).noun
+```
+によって取得できる（返り値はString型の配列）．
+
+その他の品詞（形態素）を取得するメソッド名は，以下を参照．
+
+    lib/lib/locale/morpheme.yml
+
+
 
 ## Contributing
 
