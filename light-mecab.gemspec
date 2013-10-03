@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mecab-light/version'
+require 'light-mecab/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'mecab-light'
-  spec.version       = MecabLight::VERSION
+  spec.name          = 'light-mecab'
+  spec.version       = LightMecab::VERSION
   spec.authors       = ['Kei Tsuchiya']
   spec.email         = ['kei.tsuchiya86@gmail.com']
   spec.description   = %q{Execute morphological analysis by MeCab}
   spec.summary       = %q{Wrapping mecab-ruby to execute morphological analysis easlily}
-  spec.homepage      = 'https://github.com/kei500/mecab-light'
+  spec.homepage      = 'https://github.com/kei500/light-mecab'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
