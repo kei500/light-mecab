@@ -10,7 +10,7 @@ module LightMecab
       # @param text [String]
       # @return [Array <MeCab::Node>] 
       def analyze(text)
-        nodes = []
+        nodes = Array.new
         node = ::MeCab::Tagger.new.parseToNode(text)
         while node
           nodes << node
@@ -51,7 +51,7 @@ module LightMecab
     # @param name [String]
     # @return [Array <String>]
     def extract(name)
-      morpheme = []
+      morpheme = Array.new
       @nodes.each do |node|
         if name == node.feature.split(',').first.force_encoding('UTF-8')
           morpheme << node.surface.force_encoding('UTF-8')
