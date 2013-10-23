@@ -21,7 +21,6 @@ module LightMecab
         nodes
       end
 
-      # @param key [String or Symbol]
       # @return [Hash]
       def i18n
         @@i18n
