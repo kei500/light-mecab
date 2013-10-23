@@ -22,9 +22,9 @@ module LightMecab
       end
 
       # @param key [String or Symbol]
-      # @return [String]
-      def i18n(key)
-        key.is_a?(Symbol) ? @@i18n[key.to_s] : @@i18n[key]
+      # @return [Hash]
+      def i18n
+        @@i18n
       end
     end
 
@@ -40,10 +40,10 @@ module LightMecab
 
     # @param method_name [Symbol]
     def method_missing(method_name)
-      if !self.class.i18n(method_name)
+      if !self.class.i18n[method_name.to_s]
         raise NoMethodError
       end
-      extract(self.class.i18n(method_name))
+      extract(self.class.i18n[method_name.to_s])
     end
 
     private
