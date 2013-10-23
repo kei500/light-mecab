@@ -4,7 +4,7 @@ require 'yaml'
 
 module LightMecab
   class Morpheme
-    @@i18n = ::YAML.load_file(File.expand_path(File.join(__FILE__, '..', 'locale', 'morpheme.yml')))
+    @@i18n = ::YAML.load_file(File.expand_path(File.join(__FILE__, '..', '..', 'locale', 'morpheme.yml')))
 
     class << self
       # @param text [String]
