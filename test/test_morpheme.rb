@@ -30,6 +30,10 @@ class TC_LightMecab_Morpheme < Test::Unit::TestCase
     assert_equal(['美しい'], @morpheme.adjective)
   end
 
+  def test_method_missing_adverb
+    assert_equal([], @morpheme.adverb)
+  end
+
   def test_method_missing_conjunction
     assert_equal(['そして'], @morpheme.conjunction)
   end
