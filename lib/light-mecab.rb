@@ -4,13 +4,13 @@ require 'yaml'
 
 module LightMecab
   class Morpheme
-    @@i18n = ::YAML.load_file(File.expand_path(File.join(__FILE__, '..', 'locale', 'morpheme.yml')))
+    @@i18n = ::YAML.load_file(File.expand_path(File.join(__FILE__, '..', '..', 'locale', 'morpheme.yml')))
 
     class << self
       # @param text [String]
       # @return [Array <MeCab::Node>] 
       def analyze(text)
-        nodes = []
+        nodes = Array.new
         node = ::MeCab::Tagger.new.parseToNode(text)
         while node
           nodes << node
@@ -22,9 +22,9 @@ module LightMecab
       end
 
       # @param key [String or Symbol]
-      # @return [String]
-      def i18n(key)
-        key.is_a?(Symbol) ? @@i18n[key.to_s] : @@i18n[key]
+      # @return [Hash]
+      def i18n
+        @@i18n
       end
     end
 
@@ -40,10 +40,10 @@ module LightMecab
 
     # @param method_name [Symbol]
     def method_missing(method_name)
-      if !self.class.i18n(method_name)
+      if !self.class.i18n[method_name.to_s]
         raise NoMethodError
       end
-      extract(self.class.i18n(method_name))
+      extract(self.class.i18n[method_name.to_s])
     end
 
     private
@@ -51,7 +51,7 @@ module LightMecab
     # @param name [String]
     # @return [Array <String>]
     def extract(name)
-      morpheme = []
+      morpheme = Array.new
       @nodes.each do |node|
         if name == node.feature.split(',').first.force_encoding('UTF-8')
           morpheme << node.surface.force_encoding('UTF-8')
