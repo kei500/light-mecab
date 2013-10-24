@@ -4,6 +4,7 @@ require 'yaml'
 
 module LightMecab
   class Morpheme
+    @@tagger = ::MeCab::Tagger.new
     @@i18n = ::YAML.load_file(File.expand_path(File.join(__FILE__, '..', '..', 'locale', 'morpheme.yml')))
 
     class << self
@@ -11,7 +12,7 @@ module LightMecab
       # @return [Array <MeCab::Node>] 
       def analyze(text)
         nodes = Array.new
-        node = ::MeCab::Tagger.new.parseToNode(text)
+        node = @@tagger.parseToNode(text)
         while node
           nodes << node
           node = node.next
@@ -21,7 +22,6 @@ module LightMecab
         nodes
       end
 
-      # @param key [String or Symbol]
       # @return [Hash]
       def i18n
         @@i18n
@@ -53,7 +53,7 @@ module LightMecab
     def extract(name)
       morpheme = Array.new
       @nodes.each do |node|
-        if name == node.feature.split(',').first.force_encoding('UTF-8')
+        if name == node.feature.force_encoding('UTF-8').split(',').first
           morpheme << node.surface.force_encoding('UTF-8')
         end
       end
