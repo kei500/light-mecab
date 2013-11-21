@@ -46,6 +46,11 @@ module LightMecab
       @nodes.size
     end
 
+    # return [Array <Hash>]
+    def parse
+      @nodes.map {|node| {self.class.pos(node) => self.class.pos_name(node)}}
+    end
+
     # @param method_name [Symbol]
     # @raise [NoMethodError]
     def method_missing(method_name)

@@ -14,6 +14,29 @@ class TC_LightMecab_Morpheme < Test::Unit::TestCase
     assert_equal(17, @morpheme.num)
   end
 
+  def test_parse()
+    parse_result = [
+      {"そして"=>"接続詞"},
+      {"太郎"=>"名詞"},
+      {"は"=>"助詞"},
+      {"この"=>"連体詞"},
+      {"本"=>"名詞"},
+      {"を"=>"助詞"},
+      {"二"=>"名詞"},
+      {"郎"=>"名詞"},
+      {"を"=>"助詞"},
+      {"見"=>"動詞"},
+      {"た"=>"助動詞"},
+      {"美しい"=>"形容詞"},
+      {"女性"=>"名詞"},
+      {"に"=>"助詞"},
+      {"渡し"=>"動詞"},
+      {"た"=>"助動詞"},
+      {"。"=>"記号"}
+    ]
+    assert_equal(parse_result, @morpheme.parse)
+  end
+
   def test_method_missing_noun
     assert_equal(['太郎', '本', '二', '郎', '女性'], @morpheme.noun)
   end
