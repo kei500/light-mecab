@@ -18,6 +18,18 @@ module LightMecab
         nodes
       end
 
+      # @param node [MeCab::Node]
+      # @return [String]
+      def pos(node)
+        node.surface.force_encoding('UTF-8')
+      end
+
+      # @param node [MeCab::Node]
+      # @return [String]
+      def pos_name(node)
+        node.feature.force_encoding('UTF-8').split(',').first
+      end
+
       # @return [Hash]
       def i18n
         @@i18n
@@ -46,13 +58,7 @@ module LightMecab
     # @param name [String]
     # @return [Array <String>]
     def extract(name)
-      morpheme = Array.new
-      @nodes.each do |node|
-        if name == node.feature.force_encoding('UTF-8').split(',').first
-          morpheme << node.surface.force_encoding('UTF-8')
-        end
-      end
-      morpheme
+      @nodes.map {|node| self.class.pos(node) if name == self.class.pos_name(node)}.compact
     end
   end
 end
