@@ -30,15 +30,14 @@ module LightMecab
     end
 
     # @return [Integer]
-    def count
+    def num
       @nodes.size
     end
 
     # @param method_name [Symbol]
+    # @raise [NoMethodError]
     def method_missing(method_name)
-      if !self.class.i18n[method_name.to_s]
-        raise NoMethodError
-      end
+      raise NoMethodError unless self.class.i18n[method_name.to_s]
       extract(self.class.i18n[method_name.to_s])
     end
 

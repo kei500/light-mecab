@@ -10,8 +10,8 @@ class TC_LightMecab_Morpheme < Test::Unit::TestCase
     @morpheme = LightMecab::Morpheme.new(@sentence)
   end
 
-  def test_count
-    assert_equal(17, @morpheme.count)
+  def test_num
+    assert_equal(17, @morpheme.num)
   end
 
   def test_method_missing_noun
