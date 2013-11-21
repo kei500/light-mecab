@@ -37,16 +37,20 @@ class TC_LightMecab_Morpheme < Test::Unit::TestCase
     assert_equal(parse_result, @morpheme.parse)
   end
 
+  def test_method_missing_ad_adjective
+    assert_equal(['この'], @morpheme.ad_adjective)
+  end
+
+  def test_method_missing_prefix
+    assert_equal([], @morpheme.prefix)
+  end
+
   def test_method_missing_noun
     assert_equal(['太郎', '本', '二', '郎', '女性'], @morpheme.noun)
   end
 
   def test_method_missing_verb
     assert_equal(['見', '渡し'], @morpheme.verb)
-  end
-
-  def test_method_missing_aux_verb
-    assert_equal(['た', 'た'], @morpheme.aux_verb)
   end
 
   def test_method_missing_adjective
@@ -61,23 +65,37 @@ class TC_LightMecab_Morpheme < Test::Unit::TestCase
     assert_equal(['そして'], @morpheme.conjunction)
   end
 
-  def test_method_missing_interjection
-    assert_equal([], @morpheme.interjection)
-  end
-
   def test_method_missing_particle
     assert_equal(['は', 'を', 'を', 'に'], @morpheme.particle)
   end
 
-  def test_method_missing_ad_adjective
-    assert_equal(['この'], @morpheme.ad_adjective)
+  def test_method_missing_aux_verb
+    assert_equal(['た', 'た'], @morpheme.aux_verb)
+  end
+
+  def test_method_missing_interjection
+    assert_equal([], @morpheme.interjection)
   end
 
   def test_method_missing_symbol
     assert_equal(['。'], @morpheme.symbol)
   end
 
+  def test_method_missing_filler
+    assert_equal([], @morpheme.filler)
+  end
+
+  def test_method_missing_other
+    assert_equal([], @morpheme.other)
+  end
+
+  def test_method_missing_unknown
+    assert_equal([], @morpheme.unknown)
+  end
+
   def test_method_missing_hoge
-    assert_raise{@morpheme.hoge}
+    assert_raise(NoMethodError) do
+      @morpheme.hogei
+    end
   end
 end
