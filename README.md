@@ -4,7 +4,8 @@ LightMecabは，mecab-rubyをラッピングすることで，より簡単に形
 
 ## Environment
 
-MeCabおよびmecab-rubyが動作する環境が必要．
+MeCabおよびmecab-rubyが動作する環境が必要．  
+MeCabの辞書にはIPA辞書を用いる．
 
 ## Installation
 
@@ -23,20 +24,33 @@ Gemfileに以下を記述する．
     $ gem install light-mecab
 
 ## Usage
-例えば「太郎はこの本を二郎を見た女性に渡した。」という文に含まれる名詞は，
-
 ```ruby
 require 'light-mecab'
+
 sentence = '太郎はこの本を二郎を見た女性に渡した。'
-LightMecab::Morpheme.new(sentence).noun
+m = LightMecab::Morpheme.new(sentence)
+
+# 品詞数の取得
+m.num
+# => 15
+
+# 品詞分解
+m.parse
+# => [{"太郎"=>"名詞"}, {"は"=>"助詞"}, …, {"。"=>"記号"}]
+
+# わかち書き
+m.parse.map{|p| p.keys}.flatten.join(' ')
+# => "太郎 は この 本 を 二 郎 を 見 た 女性 に 渡し た 。"
+
+# 名詞一覧
+m.noun
+# => ["太郎", "本", "二", "郎", "女性"]
+# その他の品詞を取得するメソッド名は locale/morpheme.yml を参照
+
+# MeCab::Nodeオブジェクトを取得したい場合
+LightMecab::Morpheme.analyze(sentence)
+# => MeCab::Nodeの配列が返ってきます
 ```
-によって取得できる（返り値はString型の配列）．
-
-その他の品詞（形態素）を取得するメソッド名は，以下を参照．
-
-    lib/locale/morpheme.yml
-
-
 
 ## Contributing
 
